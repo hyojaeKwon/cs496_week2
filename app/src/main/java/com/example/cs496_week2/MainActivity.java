@@ -65,7 +65,13 @@ public class MainActivity extends AppCompatActivity {
 
         } catch (JSONException e) {}
 
-        ViewPager viewPager = findViewById(R.id.viewPager);
+        ViewPager viewPager = findViewById(R.id.viewpager);
+
+        VPAdapter adapter = new VPAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(adapter);
+
+
+
         ViewPagerAdapter fragmentAdapter = new ViewPagerAdapter(getSupportFragmentManager());
         // ViewPager와  FragmentAdapter 연결
         viewPager.setAdapter(fragmentAdapter);
@@ -96,39 +102,39 @@ public class MainActivity extends AppCompatActivity {
         list.add(new RecyclerviewItem(R.drawable.java, "Java", 12));
 
         // 리사이클러뷰에 LinearLayoutManager 객체 지정.
-        RecyclerView recyclerView = findViewById(R.id.recycler1) ;
-        recyclerView.setLayoutManager(new LinearLayoutManager(this)) ;
+//        RecyclerView recyclerView = findViewById(R.id.recycler1) ;
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this)) ;
+//
+//        // 리사이클러뷰에 SimpleTextAdapter 객체 지정.
+//        RecyclerviewAdapter adapter = new RecyclerviewAdapter(list) ;
+//        recyclerView.setAdapter(adapter);
 
-        // 리사이클러뷰에 SimpleTextAdapter 객체 지정.
-        RecyclerviewAdapter adapter = new RecyclerviewAdapter(list) ;
-        recyclerView.setAdapter(adapter);
-
-        adapter.setOnItemClickListener(new RecyclerviewAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(View v, int position, String skill_name) {
-                if(filter.contains(skill_name)) {
-                    filter.remove(skill_name);
-                    v.setBackgroundColor(Color.WHITE);
-                } else {
-                    filter.add(skill_name);
-                    v.setBackgroundColor(Color.BLUE);
-                }
-
-                fragmentAdapter.clear();
-                for (int i = 0; i < listUser.size(); i++) {
-                    if(!listUser.get(i).getLanguage().containsAll(filter)) continue;
-                    UserFragment userFragment = new UserFragment();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("name", listUser.get(i).getName());
-                    bundle.putString("description", listUser.get(i).getDescription());
-                    bundle.putSerializable("language", listUser.get(i).getLanguage());
-                    bundle.putString("gitAddr", listUser.get(i).getGitAddr());
-                    userFragment.setArguments(bundle);
-                    fragmentAdapter.addFrag(userFragment);
-                }
-                fragmentAdapter.notifyDataSetChanged();
-                viewPager.setAdapter(fragmentAdapter);
-            }
-        }) ;
+//        adapter.setOnItemClickListener(new RecyclerviewAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(View v, int position, String skill_name) {
+//                if(filter.contains(skill_name)) {
+//                    filter.remove(skill_name);
+//                    v.setBackgroundColor(Color.WHITE);
+//                } else {
+//                    filter.add(skill_name);
+//                    v.setBackgroundColor(Color.BLUE);
+//                }
+//
+//                fragmentAdapter.clear();
+//                for (int i = 0; i < listUser.size(); i++) {
+//                    if(!listUser.get(i).getLanguage().containsAll(filter)) continue;
+//                    UserFragment userFragment = new UserFragment();
+//                    Bundle bundle = new Bundle();
+//                    bundle.putString("name", listUser.get(i).getName());
+//                    bundle.putString("description", listUser.get(i).getDescription());
+//                    bundle.putSerializable("language", listUser.get(i).getLanguage());
+//                    bundle.putString("gitAddr", listUser.get(i).getGitAddr());
+//                    userFragment.setArguments(bundle);
+//                    fragmentAdapter.addFrag(userFragment);
+//                }
+//                fragmentAdapter.notifyDataSetChanged();
+//                viewPager.setAdapter(fragmentAdapter);
+//            }
+//        }) ;
     }
 }
