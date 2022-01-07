@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ImageFragment">
+    tools:context=".UserFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardview_member"
@@ -73,6 +73,13 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="한줄소개" />
+
+            <TextView
+                android:id="@+id/gitAddrView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="gitAddr" />
 
         </LinearLayout>
 

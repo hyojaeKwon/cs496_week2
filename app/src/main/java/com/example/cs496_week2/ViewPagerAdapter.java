@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
@@ -14,13 +15,15 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     String name;
     String description;
+    HashSet<String> language;
+    String gitAddr;
 
     public ViewPagerAdapter(FragmentManager manager) {
         super(manager);
     }
 
     public interface UpdateableFragment {
-        public void updateUI(String name, String description);
+        public void updateUI(String name, String description, HashSet<String> language, String gitAddr);
     }
 
     @Override
@@ -40,17 +43,19 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getItemPosition(@NonNull Object object) {
-        if(object instanceof ImageFragment) {
-            ((UpdateableFragment) object).updateUI(name, description);
+        if(object instanceof UserFragment) {
+            ((UpdateableFragment) object).updateUI(name, description, language, gitAddr);
         }
 
         //don't return POSITION_NONE, avoid fragment recreation.
         return super.getItemPosition(object);
     }
 
-    public void update(String _name, String _description) {
+    public void update(String _name, String _description, HashSet<String> _language, String _gitAddr) {
         name = _name;
         description = _description;
+        language = _language;
+        gitAddr = _gitAddr;
         notifyDataSetChanged();
     }
 

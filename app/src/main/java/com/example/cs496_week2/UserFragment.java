@@ -13,22 +13,30 @@ import android.view.animation.ScaleAnimation;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
-public class ImageFragment extends Fragment implements ViewPagerAdapter.UpdateableFragment {
+import java.util.HashSet;
+
+public class UserFragment extends Fragment implements ViewPagerAdapter.UpdateableFragment {
 
     private static final String ARG_PARAM1 = "name";
     private static final String ARG_PARAM2 = "description";
+    private static final String ARG_PARAM3 = "language";
+    private static final String ARG_PARAM4 = "gitAddr";
     String name;
     String description;
+    HashSet<String> language;
+    String gitAddr;
 
     ScaleAnimation scaleAnimation;
     BounceInterpolator bounceInterpolator;//애니메이션이 일어나는 동안의 회수, 속도를 조절하거나 시작과 종료시의 효과를 추가 할 수 있다
     CompoundButton button_favorite;
 
-    public static ImageFragment newInstance(String name, String description) {
-        ImageFragment fragment = new ImageFragment();
+    public static UserFragment newInstance(String name, String description, HashSet<String> language, String gitAddr) {
+        UserFragment fragment = new UserFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, name);
         args.putString(ARG_PARAM2, description);
+        args.putSerializable(ARG_PARAM3, language);
+        args.putString(ARG_PARAM4, gitAddr);
         fragment.setArguments(args);
         return fragment;
     }
@@ -39,16 +47,19 @@ public class ImageFragment extends Fragment implements ViewPagerAdapter.Updateab
         if(getArguments() != null) {
             name = getArguments().getString(ARG_PARAM1);
             description = getArguments().getString(ARG_PARAM2);
+            language = (HashSet)getArguments().getSerializable(ARG_PARAM3);
+            gitAddr = getArguments().getString(ARG_PARAM4);
         }
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_image, container, false);
+        View view = inflater.inflate(R.layout.fragment_user, container, false);
 
         TextView nameView = view.findViewById(R.id.nameView);
         TextView descriptionView = view.findViewById(R.id.descriptionView);
+        TextView gitAddrView = view.findViewById(R.id.gitAddrView);
 
         if (getArguments() != null) {
             Bundle args = getArguments();
@@ -56,6 +67,7 @@ public class ImageFragment extends Fragment implements ViewPagerAdapter.Updateab
             //imageView.setImageResource(args.getInt("imgRes"));
             nameView.setText(args.getString("name"));
             descriptionView.setText(args.getString("description"));
+            gitAddrView.setText(args.getString("gitAddr"));
         }
 
         scaleAnimation = new ScaleAnimation(0.7f, 1.0f, 0.7f, 1.0f, Animation.RELATIVE_TO_SELF, 0.7f, Animation.RELATIVE_TO_SELF, 0.7f);
@@ -77,9 +89,11 @@ public class ImageFragment extends Fragment implements ViewPagerAdapter.Updateab
     }
 
     @Override
-    public void updateUI(String _name, String _description) {
+    public void updateUI(String _name, String _description, HashSet<String> _language, String _gitAddr) {
         name = _name;
         description = _description;
+        language = _language;
+        gitAddr = _gitAddr;
 
         //UI 처리
     }
