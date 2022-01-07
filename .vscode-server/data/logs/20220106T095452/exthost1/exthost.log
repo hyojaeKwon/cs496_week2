@@ -1,0 +1,13 @@
+[2022-01-06 09:54:55.443] [exthost] [info] Extension host with pid 28713 started
+[2022-01-06 09:54:55.707] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: true, activationEvent: '*'
+[2022-01-06 09:54:55.717] [exthost] [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.github
+[2022-01-06 09:54:55.780] [exthost] [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+[2022-01-06 09:54:55.895] [exthost] [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+[2022-01-06 09:54:56.262] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onStartupFinished'
+[2022-01-06 09:54:56.293] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+[2022-01-06 09:54:56.300] [exthost] [info] Eager extensions activated
+[2022-01-06 09:54:56.921] [exthost] [info] ExtensionService#_doActivateExtension vscode.configuration-editing, startup: false, activationEvent: 'onLanguage:jsonc'
+[2022-01-06 09:54:56.933] [exthost] [info] ExtensionService#_doActivateExtension vscode.json-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+[2022-01-06 09:54:57.040] [exthost] [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+[2022-01-06 09:55:14.252] [exthost] [info] extension host terminating: received terminate message from renderer
+[2022-01-06 09:55:14.275] [exthost] [info] Extension host with pid 28713 exiting with code 0

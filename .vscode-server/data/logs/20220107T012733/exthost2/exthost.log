@@ -1,0 +1,66 @@
+[2022-01-07 01:28:19.542] [exthost] [info] Extension host with pid 16713 started
+[2022-01-07 01:28:19.559] [exthost] [info] Lock '/root/.vscode-server/data/User/workspaceStorage/9652009b423754869843812d2b7064b6/vscode.lock': Lock acquired.
+[2022-01-07 01:28:19.616] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: true, activationEvent: '*'
+[2022-01-07 01:28:19.625] [exthost] [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.github
+[2022-01-07 01:28:19.799] [exthost] [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+[2022-01-07 01:28:19.915] [exthost] [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+[2022-01-07 01:28:20.004] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onStartupFinished'
+[2022-01-07 01:28:20.021] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+[2022-01-07 01:28:20.025] [exthost] [info] Eager extensions activated
+[2022-01-07 01:28:50.901] [exthost] [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onLanguage:javascript'
+[2022-01-07 01:47:29.760] [exthost] [error] [vscode.typescript-language-features] provider FAILED
+[2022-01-07 01:47:29.761] [exthost] [error] Error: <semantic> TypeScript Server Error (4.5.4)
+BADCLIENT: Bad error code, 6133 not found in range 304..310 (found: ); could have caused this error:
+Debug Failure. False expression: should not delete whole source file
+Error: BADCLIENT: Bad error code, 6133 not found in range 304..310 (found: ); could have caused this error:
+Debug Failure. False expression: should not delete whole source file
+    at tryDeleteDeclarationWorker (/root/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/extensions/node_modules/typescript/lib/tsserver.js:151016:26)
+    at tryDeleteDeclaration (/root/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/extensions/node_modules/typescript/lib/tsserver.js:150998:13)
+    at /root/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/extensions/node_modules/typescript/lib/tsserver.js:150863:32
+    at Function.ChangeTracker.with (/root/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/extensions/node_modules/typescript/lib/tsserver.js:144341:17)
+    at Object.getCodeActions (/root/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/extensions/node_modules/typescript/lib/tsserver.js:150862:69)
+    at /root/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/extensions/node_modules/typescript/lib/tsserver.js:145527:77
+    at Object.flatMap (/root/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/extensions/node_modules/typescript/lib/tsserver.js:522:25)
+    at Object.getFixes (/root/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/extensions/node_modules/typescript/lib/tsserver.js:145527:23)
+    at /root/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/extensions/node_modules/typescript/lib/tsserver.js:160394:35
+    at Object.flatMap (/root/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/extensions/node_modules/typescript/lib/tsserver.js:522:25)
+    at Object.getCodeFixesAtPosition (/root/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/extensions/node_modules/typescript/lib/tsserver.js:160392:23)
+    at IOSession.Session.getCodeFixes (/root/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/extensions/node_modules/typescript/lib/tsserver.js:171880:64)
+    at Session.handlers.ts.Map.ts.getEntries._a.<computed> (/root/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/extensions/node_modules/typescript/lib/tsserver.js:170516:61)
+    at /root/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/extensions/node_modules/typescript/lib/tsserver.js:172193:88
+    at IOSession.Session.executeWithRequestId (/root/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/extensions/node_modules/typescript/lib/tsserver.js:172184:28)
+    at IOSession.Session.executeCommand (/root/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/extensions/node_modules/typescript/lib/tsserver.js:172193:33)
+    at IOSession.Session.onMessage (/root/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/extensions/node_modules/typescript/lib/tsserver.js:172219:35)
+    at Interface.<anonymous> (/root/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/extensions/node_modules/typescript/lib/tsserver.js:174824:31)
+    at Interface.emit (events.js:315:20)
+    at Interface._onLine (readline.js:337:10)
+    at Interface._normalWrite (readline.js:482:12)
+    at Socket.ondata (readline.js:194:10)
+    at Socket.emit (events.js:315:20)
+    at addChunk (internal/streams/readable.js:309:12)
+    at readableAddChunk (internal/streams/readable.js:284:9)
+    at Socket.Readable.push (internal/streams/readable.js:223:10)
+    at Pipe.onStreamRead (internal/stream_base_commons.js:188:23)
+	at Function.create (/root/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/extensions/typescript-language-features/dist/extension.js:1:494291)
+	at dispatchResponse (/root/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/extensions/typescript-language-features/dist/extension.js:1:488127)
+	at dispatchMessage (/root/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/extensions/typescript-language-features/dist/extension.js:1:486984)
+	at /root/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/extensions/typescript-language-features/dist/extension.js:1:486469
+	at u.fire (/root/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/out/vs/server/remoteExtensionHostProcess.js:66:1712)
+	at m.onLengthData (/root/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/extensions/typescript-language-features/dist/extension.js:1:497220)
+	at Socket.<anonymous> (/root/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/extensions/typescript-language-features/dist/extension.js:1:496867)
+	at Socket.emit (events.js:315:20)
+	at addChunk (internal/streams/readable.js:309:12)
+	at readableAddChunk (internal/streams/readable.js:284:9)
+	at Socket.Readable.push (internal/streams/readable.js:223:10)
+	at Pipe.onStreamRead (internal/stream_base_commons.js:188:23)
+[2022-01-07 01:53:52.118] [exthost] [info] ExtensionService#_doActivateExtension vscode.configuration-editing, startup: false, activationEvent: 'onLanguage:json'
+[2022-01-07 01:53:52.141] [exthost] [info] ExtensionService#_doActivateExtension vscode.extension-editing, startup: false, activationEvent: 'onLanguage:json'
+[2022-01-07 01:53:52.168] [exthost] [info] ExtensionService#_doActivateExtension vscode.json-language-features, startup: false, activationEvent: 'onLanguage:json'
+[2022-01-07 01:53:52.282] [exthost] [info] ExtensionService#_doActivateExtension vscode.npm, startup: false, activationEvent: 'onLanguage:json'
+[2022-01-07 02:07:56.749] [exthost] [warning] [Decorations] CAPPING events from decorations provider vscode.git 2704
+[2022-01-07 02:07:59.792] [exthost] [warning] [Decorations] CAPPING events from decorations provider vscode.git 2704
+[2022-01-07 02:08:04.946] [exthost] [warning] [Decorations] CAPPING events from decorations provider vscode.git 2704
+[2022-01-07 02:08:10.120] [exthost] [warning] [Decorations] CAPPING events from decorations provider vscode.git 2704
+[2022-01-07 04:00:27.300] [exthost] [info] extension host terminating: renderer disconnected for too long (2)
+[2022-01-07 04:00:27.301] [exthost] [info] Lock '/root/.vscode-server/data/User/workspaceStorage/9652009b423754869843812d2b7064b6/vscode.lock': Marking the lockfile as scheduled to be released in 6000 ms.
+[2022-01-07 04:00:27.335] [exthost] [info] Extension host with pid 16713 exiting with code 0

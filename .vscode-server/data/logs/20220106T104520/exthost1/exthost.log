@@ -1,0 +1,17 @@
+[2022-01-06 10:45:34.194] [exthost] [info] Extension host with pid 31023 started
+[2022-01-06 10:45:34.197] [exthost] [error] Error: EEXIST: file already exists, open '/root/.vscode-server/data/User/workspaceStorage/93beb6dff1230d50af1636af961a8cbf/vscode.lock'
+[2022-01-06 10:45:34.198] [exthost] [info] Lock '/root/.vscode-server/data/User/workspaceStorage/93beb6dff1230d50af1636af961a8cbf/vscode.lock': Could not acquire lock, checking if the file is stale.
+[2022-01-06 10:45:34.200] [exthost] [info] Lock '/root/.vscode-server/data/User/workspaceStorage/93beb6dff1230d50af1636af961a8cbf/vscode.lock': The pid 28883 appears to be gone.
+[2022-01-06 10:45:34.200] [exthost] [info] Lock '/root/.vscode-server/data/User/workspaceStorage/93beb6dff1230d50af1636af961a8cbf/vscode.lock': Deleting a stale lock.
+[2022-01-06 10:45:34.207] [exthost] [info] Lock '/root/.vscode-server/data/User/workspaceStorage/93beb6dff1230d50af1636af961a8cbf/vscode.lock': Lock acquired.
+[2022-01-06 10:45:34.287] [exthost] [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onLanguage:javascript'
+[2022-01-06 10:45:34.341] [exthost] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: true, activationEvent: '*'
+[2022-01-06 10:45:34.345] [exthost] [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.github
+[2022-01-06 10:45:34.826] [exthost] [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+[2022-01-06 10:45:34.901] [exthost] [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+[2022-01-06 10:45:35.260] [exthost] [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onStartupFinished'
+[2022-01-06 10:45:35.279] [exthost] [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+[2022-01-06 10:45:35.291] [exthost] [info] Eager extensions activated
+[2022-01-06 10:53:31.704] [exthost] [info] extension host terminating: parent process 30817 does not exist anymore: kill ESRCH (code: ESRCH) (errno: -3)
+[2022-01-06 10:53:31.705] [exthost] [info] Lock '/root/.vscode-server/data/User/workspaceStorage/93beb6dff1230d50af1636af961a8cbf/vscode.lock': Marking the lockfile as scheduled to be released in 6000 ms.
+[2022-01-06 10:53:31.733] [exthost] [info] Extension host with pid 31023 exiting with code 0

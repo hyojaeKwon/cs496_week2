@@ -1,0 +1,62 @@
+
+
+*
+* Visual Studio Code Server
+*
+* Reminder: You may only use this software with Visual Studio family products,
+* as described in the license https://aka.ms/vscode-remote/license
+*
+
+Extension host agent listening on 37351
+
+[01:27:33] Extension host agent started.
+[01:27:33] [127.0.0.1][dc3bad24][ManagementConnection] New connection established.
+[01:27:33] [127.0.0.1][457cd003][ExtensionHostConnection] New connection established.
+[01:27:33] [127.0.0.1][457cd003][ExtensionHostConnection] <16550> Launched Extension Host Process.
+[01:28:12] [127.0.0.1][dc3bad24][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+[01:28:12] [127.0.0.1][457cd003][ExtensionHostConnection] <16550> Extension Host Process exited with code: 0, signal: null.
+Last EH closed, waiting before shutting down
+[01:28:12] Last EH closed, waiting before shutting down
+Got delay-shutdown request while in shutdown timeout, delaying
+[01:28:18] Got delay-shutdown request while in shutdown timeout, delaying
+Cancelling previous shutdown timeout
+[01:28:18] Cancelling previous shutdown timeout
+[01:28:18] [127.0.0.1][316dee98][ManagementConnection] New connection established.
+[01:28:18] [127.0.0.1][f709eb10][ExtensionHostConnection] New connection established.
+[01:28:18] [127.0.0.1][f709eb10][ExtensionHostConnection] <16713> Launched Extension Host Process.
+New EH opened, aborting shutdown
+[01:33:18] New EH opened, aborting shutdown
+IPC "File Watcher (parcel, node.js)" crashed with exit code null and signal SIGSEGV
+[01:52:00] [File Watcher (parcel)] restarting watcher after error: terminated by itself with code null, signal: SIGSEGV
+[02:24:47] [127.0.0.1][316dee98][ManagementConnection] The client has disconnected, will wait for reconnection 3h before disposing...
+Error: Unexpected SIGPIPE
+    at process.<anonymous> (/root/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/out/bootstrap.js:1:370)
+    at process.emit (events.js:315:20)
+[03:55:26] [127.0.0.1][316dee98][ManagementConnection] Another client has connected, will shorten the wait for reconnection 5m before disposing...
+[03:55:26] [127.0.0.1][3ef5e793][ManagementConnection] New connection established.
+[03:55:27] [127.0.0.1][abc922ed][ExtensionHostConnection] New connection established.
+[03:55:27] [127.0.0.1][abc922ed][ExtensionHostConnection] <19263> Launched Extension Host Process.
+[IPC Library: Pty Host]  INFO Persistent process "9": Replaying 4317 chars and 1 size events
+[IPC Library: Pty Host]  INFO Persistent process "10": Replaying 3593 chars and 1 size events
+[04:00:27] [127.0.0.1][316dee98][ManagementConnection] The reconnection short grace time of 5m has expired, so the connection will be disposed.
+[04:00:27] [127.0.0.1][f709eb10][ExtensionHostConnection] <16713> Extension Host Process exited with code: 0, signal: null.
+[07:01:27] [127.0.0.1][3ef5e793][ManagementConnection] The client has disconnected, will wait for reconnection 3h before disposing...
+Error: Unexpected SIGPIPE
+    at process.<anonymous> (/root/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/out/bootstrap.js:1:370)
+    at process.emit (events.js:315:20)
+[07:31:32] [127.0.0.1][3ef5e793][ManagementConnection] Another client has connected, will shorten the wait for reconnection 5m before disposing...
+[07:31:32] [127.0.0.1][edc436e6][ManagementConnection] New connection established.
+[07:31:32] [127.0.0.1][005b7b2c][ExtensionHostConnection] New connection established.
+[07:31:32] [127.0.0.1][005b7b2c][ExtensionHostConnection] <10502> Launched Extension Host Process.
+[IPC Library: Pty Host]  INFO Persistent process "9": Replaying 9279 chars and 1 size events
+[07:36:32] [127.0.0.1][3ef5e793][ManagementConnection] The reconnection short grace time of 5m has expired, so the connection will be disposed.
+[07:36:32] [127.0.0.1][abc922ed][ExtensionHostConnection] <19263> Extension Host Process exited with code: 0, signal: null.
+[09:37:32] [127.0.0.1][edc436e6][ManagementConnection] The client has disconnected, will wait for reconnection 3h before disposing...
+Error: Unexpected SIGPIPE
+    at process.<anonymous> (/root/.vscode-server/bin/899d46d82c4c95423fb7e10e68eba52050e30ba3/out/bootstrap.js:1:370)
+    at process.emit (events.js:315:20)
+[10:00:08] [127.0.0.1][edc436e6][ManagementConnection] Another client has connected, will shorten the wait for reconnection 5m before disposing...
+[10:00:08] [127.0.0.1][4c7e8e23][ManagementConnection] New connection established.
+[10:00:08] [127.0.0.1][320528bf][ExtensionHostConnection] New connection established.
+[10:00:09] [127.0.0.1][320528bf][ExtensionHostConnection] <28809> Launched Extension Host Process.
+[IPC Library: Pty Host]  INFO Persistent process "9": Replaying 10542 chars and 1 size events
