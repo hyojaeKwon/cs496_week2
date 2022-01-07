@@ -1,36 +1,33 @@
-package com.example.firsttab;
+package com.example.cs496_week2;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     private final List<Fragment> mFragmentList = new ArrayList<>();
-    private final List<String> mFragmentTitleList = new ArrayList<>();
+    //private final List<String> mFragmentTitleList = new ArrayList<>();
 
-    String technology;
-    int status;
+    String name;
+    String description;
+    HashSet<String> language;
+    String gitAddr;
 
     public ViewPagerAdapter(FragmentManager manager) {
         super(manager);
     }
 
     public interface UpdateableFragment {
-        public void updateUI(int status, String technology);
+        public void updateUI(String name, String description, HashSet<String> language, String gitAddr);
     }
 
     @Override
     public Fragment getItem(int position) {
-        switch (position) {
-            case 0:
-                return ImageFragment.newInstance(status, technology);
-        }
-
         return mFragmentList.get(position);
     }
 
@@ -39,29 +36,32 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         return mFragmentList.size();
     }
 
-    @Override
+    /*@Override
     public CharSequence getPageTitle(int position) {
         return mFragmentTitleList.get(position);
-    }
+    }*/
 
     @Override
     public int getItemPosition(@NonNull Object object) {
-        if(object instanceof ImageFragment) {
-            ((UpdateableFragment) object).updateUI(status, technology);
+        if(object instanceof UserFragment) {
+            ((UpdateableFragment) object).updateUI(name, description, language, gitAddr);
         }
 
         //don't return POSITION_NONE, avoid fragment recreation.
         return super.getItemPosition(object);
     }
 
-    public void update(int _status, String _technology) {
-        status = _status;
-        technology = _technology;
+    public void update(String _name, String _description, HashSet<String> _language, String _gitAddr) {
+        name = _name;
+        description = _description;
+        language = _language;
+        gitAddr = _gitAddr;
         notifyDataSetChanged();
     }
 
-    public void addFrag(Fragment fragment, String title) {
+    public void addFrag(Fragment fragment) {
         mFragmentList.add(fragment);
-        mFragmentTitleList.add(title);
     }
+
+    public void clear() { mFragmentList.clear(); }
 }

@@ -1,4 +1,4 @@
-package com.example.firsttab;
+package com.example.cs496_week2;
 
 import android.content.Context;
 
