@@ -64,9 +64,8 @@ app.post( '/ideas/create',(req,res) => {
   let Ititle = req.body.title;
   let Idescription = req.body.description;
   let IauthorId = req.body.id;
-  let stack = req.body.arr;
-
-  console.log(stack);
+  let fE = req.body.frontEnd;
+  let bE = req.body.backEnd;
   
   let params = [Ititle,Idescription,IauthorId];
   
@@ -87,7 +86,8 @@ app.post( '/ideas/create',(req,res) => {
 
   db.query(sql, (req,res) => {
     if(!req){
-      nowId = res[0].Iid;      
+      console.log(res);
+      nowId = res.@Iid;      
     } else {
       nowId = -1;
     }
@@ -95,15 +95,36 @@ app.post( '/ideas/create',(req,res) => {
 
   console.log()
   //디비 저장
-  for(let i= 0 ; i < stack.length ; i++ ){
-    let param=[nowId,stack[i]];
-    sql = `insert into ideas values (?,?)`
+  sql = `insert into idea_stack values (?,?)`
+  console.log('시작');
+  console.log(nowId);
+  console.log(fE);
+  console.log(bE);
+  if(fE!=undefined){
+    let param=[nowId,fE];
     db.query(sql,param,(err,rows,fields) => {
       if(err){
-        console.log(err);
+
       }
-    })
+    });
   }
+  if(bE!=undefined){
+    let param=[nowId,bE];
+    db.query(sql,param,(err,rows,fields) => {
+      if(err){
+        
+      }
+    });
+  }
+  // for(let i= 0 ; i < stack.length ; i++ ){
+  //   let param=[nowId,stack[i]];
+  //   sql = `insert into ideas values (?,?)`
+  //   db.query(sql,param,(err,rows,fields) => {
+  //     if(err){
+  //       console.log(err);
+  //     }
+  //   })
+  // }
   
 
 });
