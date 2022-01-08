@@ -1,11 +1,11 @@
 package com.example.cs496_week2;
 
-public class RecyclerviewItem {
+public class SkillItem {
     private int image;
     private String name;
     private int count;
 
-    public RecyclerviewItem(int image, String name, int count) {
+    public SkillItem(int image, String name, int count) {
         this.image = image;
         this.name = name;
         this.count = count;

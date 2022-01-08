@@ -1,5 +1,6 @@
 package com.example.cs496_week2;
 
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -73,7 +74,7 @@ public class Frag1 extends Fragment {
         } catch (JSONException e) {
         }
 
-        ViewPager viewPager = v.findViewById(R.id.viewPager);
+        ClickableViewPager viewPager = v.findViewById(R.id.viewPager_profile);
         ViewPagerAdapter fragmentAdapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
         // ViewPager와  FragmentAdapter 연결
         viewPager.setAdapter(fragmentAdapter);
@@ -98,20 +99,27 @@ public class Frag1 extends Fragment {
         }
         fragmentAdapter.notifyDataSetChanged();
 
+        viewPager.setOnViewPagerClickListener(new ClickableViewPager.OnClickListener() {
+            @Override
+            public void onViewPagerClick(ViewPager viewPager) {
+                getActivity().startActivity(new Intent(getActivity(), DetailProfile.class));
+            }
+        });
+
         // 리사이클러뷰에 표시할 데이터 리스트 생성.
-        ArrayList<RecyclerviewItem> list = new ArrayList<>();
-        list.add(new RecyclerviewItem(R.drawable.python, "Python", 15));
-        list.add(new RecyclerviewItem(R.drawable.java, "Java", 12));
+        ArrayList<SkillItem> list = new ArrayList<>();
+        list.add(new SkillItem(R.drawable.python, "Python", 15));
+        list.add(new SkillItem(R.drawable.java, "Java", 12));
 
         // 리사이클러뷰에 LinearLayoutManager 객체 지정.
-        RecyclerView recyclerView = v.findViewById(R.id.recycler1);
+        RecyclerView recyclerView = v.findViewById(R.id.recycler_skill);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
 
         // 리사이클러뷰에 SimpleTextAdapter 객체 지정.
-        RecyclerviewAdapter adapter = new RecyclerviewAdapter(list);
+        SkillRecyclerviewAdapter adapter = new SkillRecyclerviewAdapter(list);
         recyclerView.setAdapter(adapter);
 
-        adapter.setOnItemClickListener(new RecyclerviewAdapter.OnItemClickListener() {
+        adapter.setOnItemClickListener(new SkillRecyclerviewAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position, String skill_name) {
                 if (filter.contains(skill_name)) {

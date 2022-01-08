@@ -57,7 +57,7 @@ public class UserFragment extends Fragment implements ViewPagerAdapter.Updateabl
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_user, container, false);
+        View view = inflater.inflate(R.layout.user_profile, container, false);
 
         TextView nameView = view.findViewById(R.id.nameView);
         TextView descriptionView = view.findViewById(R.id.descriptionView);
@@ -78,7 +78,7 @@ public class UserFragment extends Fragment implements ViewPagerAdapter.Updateabl
         bounceInterpolator = new BounceInterpolator();
         scaleAnimation.setInterpolator(bounceInterpolator);
 
-        button_favorite = view.findViewById(R.id.button_favorite);
+        button_favorite = view.findViewById(R.id.btn_profile_like);
 
         button_favorite.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
