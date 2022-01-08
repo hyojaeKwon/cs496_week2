@@ -43,7 +43,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getItemPosition(@NonNull Object object) {
-        if(object instanceof UserFragment) {
+        if (object instanceof UserFragment) {
             ((UpdateableFragment) object).updateUI(name, description, language, gitAddr);
         }
 
@@ -63,5 +63,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         mFragmentList.add(fragment);
     }
 
-    public void clear() { mFragmentList.clear(); }
+    public void clear() {
+        mFragmentList.clear();
+    }
 }

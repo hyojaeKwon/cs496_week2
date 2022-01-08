@@ -16,15 +16,15 @@ public class RecyclerviewAdapter extends RecyclerView.Adapter<RecyclerviewAdapte
     private ArrayList<RecyclerviewItem> mData = null;
 
     public interface OnItemClickListener {
-        void onItemClick(View v, int position, String skill_name) ;
+        void onItemClick(View v, int position, String skill_name);
     }
 
     // 리스너 객체 참조를 저장하는 변수
-    private OnItemClickListener mListener = null ;
+    private OnItemClickListener mListener = null;
 
     // OnItemClickListener 리스너 객체 참조를 어댑터에 전달하는 메서드
     public void setOnItemClickListener(OnItemClickListener listener) {
-        this.mListener = listener ;
+        this.mListener = listener;
     }
 
     // 아이템 뷰를 저장하는 뷰홀더 클래스.
@@ -44,12 +44,12 @@ public class RecyclerviewAdapter extends RecyclerView.Adapter<RecyclerviewAdapte
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int pos = getAdapterPosition() ;
+                    int pos = getAdapterPosition();
                     if (pos != RecyclerView.NO_POSITION) {
                         // 리스너 객체의 메서드 호출.
                         if (mListener != null) {
                             String skill_name = name_view.getText().toString();
-                            mListener.onItemClick(v, pos, skill_name) ;
+                            mListener.onItemClick(v, pos, skill_name);
                         }
                     }
                 }
@@ -59,19 +59,19 @@ public class RecyclerviewAdapter extends RecyclerView.Adapter<RecyclerviewAdapte
 
     // 생성자에서 데이터 리스트 객체를 전달받음.
     RecyclerviewAdapter(ArrayList<RecyclerviewItem> list) {
-        mData = list ;
+        mData = list;
     }
 
     // onCreateViewHolder() - 아이템 뷰를 위한 뷰홀더 객체 생성하여 리턴.
     @Override
     public RecyclerviewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Context context = parent.getContext() ;
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) ;
+        Context context = parent.getContext();
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View view = inflater.inflate(R.layout.recyclerview_item, parent, false) ;
-        RecyclerviewAdapter.ViewHolder vh = new RecyclerviewAdapter.ViewHolder(view) ;
+        View view = inflater.inflate(R.layout.recyclerview_item, parent, false);
+        RecyclerviewAdapter.ViewHolder vh = new RecyclerviewAdapter.ViewHolder(view);
 
-        return vh ;
+        return vh;
     }
 
     // onBindViewHolder() - position에 해당하는 데이터를 뷰홀더의 아이템뷰에 표시.
@@ -90,6 +90,6 @@ public class RecyclerviewAdapter extends RecyclerView.Adapter<RecyclerviewAdapte
     // getItemCount() - 전체 데이터 갯수 리턴.
     @Override
     public int getItemCount() {
-        return mData.size() ;
+        return mData.size();
     }
 }

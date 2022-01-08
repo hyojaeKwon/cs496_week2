@@ -15,19 +15,35 @@ public class UserInfo {
         this.gitAddr = gitAddr;
     }
 
-    public String getName() { return name; }
+    public String getName() {
+        return name;
+    }
 
-    public void setName(String name) { this.name = name; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public HashSet<String> getLanguage() { return language; }
+    public HashSet<String> getLanguage() {
+        return language;
+    }
 
-    public void setLanguage(HashSet<String> language) { this.language = language; }
+    public void setLanguage(HashSet<String> language) {
+        this.language = language;
+    }
 
-    public String getDescription() { return description; }
+    public String getDescription() {
+        return description;
+    }
 
-    public void setDescription(String description) { this.description = description; }
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-    public String getGitAddr() { return gitAddr; }
+    public String getGitAddr() {
+        return gitAddr;
+    }
 
-    public void setGitAddr(String gitAddr) { this.gitAddr = gitAddr; }
+    public void setGitAddr(String gitAddr) {
+        this.gitAddr = gitAddr;
+    }
 }

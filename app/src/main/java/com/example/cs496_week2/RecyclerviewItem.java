@@ -11,15 +11,27 @@ public class RecyclerviewItem {
         this.count = count;
     }
 
-    public int getImage() { return image; }
+    public int getImage() {
+        return image;
+    }
 
-    public void setImage(int image) { this.image = image; }
+    public void setImage(int image) {
+        this.image = image;
+    }
 
-    public String getName() { return name; }
+    public String getName() {
+        return name;
+    }
 
-    public void setName(String name) { this.name = name; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public int getCount() { return count; }
+    public int getCount() {
+        return count;
+    }
 
-    public void setCount(int count) { this.count = count; }
+    public void setCount(int count) {
+        this.count = count;
+    }
 }
