@@ -61,7 +61,6 @@ app.get('/ideas/', async(req,res) => {
 app.post( '/ideas/create',(req,res) => {
   let sql = 'insert into ideas values (null,?,?,?)';
 
-  console.log(req.body);
   let Ititle = req.body.title;
   let Idescription = req.body.description;
   let IauthorId = req.body.id;
@@ -119,6 +118,8 @@ function postIdeaStack(nowId,bE,fE){
   }
 
   }
+
+
 app.listen(PORT, () => {
   console.log(`Server On : http://192.249.18.118:${PORT}/`);
 })
