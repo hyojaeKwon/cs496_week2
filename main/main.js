@@ -56,6 +56,7 @@ app.get('/ideas/', async(req,res) => {
   })
 })
 
+
 //idea post api
 app.post( '/ideas/create',(req,res) => {
   let sql = 'insert into ideas values (null,?,?,?)';
@@ -66,7 +67,6 @@ app.post( '/ideas/create',(req,res) => {
   let IauthorId = req.body.id;
   let fE = req.body.frontEnd;
   let bE = req.body.backEnd;
-  
   let params = [Ititle,Idescription,IauthorId];
   
   //디비 저장
@@ -78,57 +78,47 @@ app.post( '/ideas/create',(req,res) => {
         // console.log(err);
       }
     }
-    );
+  );
   
   var nowId;
   //ideas에서 Iid가져오기
   sql = "select Iid from ideas order by Iid desc limit 1";
 
-  db.query(sql, (req,res) => {
+  db.query(sql, async (req,res) => {
     if(!req){
-      console.log(res);
-      nowId = res.@Iid;      
+      // console.log(res);
+      nowId = res[0].Iid;
+      // console.log(res[0].Iid);      
     } else {
       nowId = -1;
     }
-  });
+    postIdeaStack(nowId,bE,fE)
+  });    
+});
 
-  console.log()
-  //디비 저장
-  sql = `insert into idea_stack values (?,?)`
-  console.log('시작');
+function postIdeaStack(nowId,bE,fE){
   console.log(nowId);
-  console.log(fE);
-  console.log(bE);
+  sql = `insert into idea_stack values (?,?)`
+  
   if(fE!=undefined){
     let param=[nowId,fE];
-    db.query(sql,param,(err,rows,fields) => {
+    db.query(sql,param),
+      function (err,rows,fields) {
       if(err){
-
+        res.send(rows);
       }
-    });
+    };
   }
   if(bE!=undefined){
     let param=[nowId,bE];
     db.query(sql,param,(err,rows,fields) => {
       if(err){
-        
+        res.send(rows);
       }
     });
   }
-  // for(let i= 0 ; i < stack.length ; i++ ){
-  //   let param=[nowId,stack[i]];
-  //   sql = `insert into ideas values (?,?)`
-  //   db.query(sql,param,(err,rows,fields) => {
-  //     if(err){
-  //       console.log(err);
-  //     }
-  //   })
-  // }
-  
 
-});
-
+  }
 app.listen(PORT, () => {
   console.log(`Server On : http://192.249.18.118:${PORT}/`);
 })
