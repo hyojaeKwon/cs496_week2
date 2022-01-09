@@ -45,42 +45,44 @@ db.query(queryState,(error,data) => {
 });
 
 //get ideas detail
-app.get('/ideas/:Iid', async(req,res) => {
+app.get('/ideas/:Iid', async (req,res) => {
   let id = [req.params.Iid];
   id = String(id);
-  console.log(id);
-  var returnObj = new Object();
+  var returnList = [];
 
   let que = `select * from ideas where Iid = ` + id; 
 
-  console.log(que);
+    console.log(returnList);
+    db.query(que, async (error, data) => {
+      if(!error){
+        // console.log(data[0]);
+        returnList.push(data);
+        // console.log(data[0]);
+      } else if(data == []){
+        return null;
+      } else{
+        return null;
+      }
+      
+      que = `select PUid from participant where PIid =` + id;
+      db.query(que,async (error,data) => {
+        if(!error){
+          // console.log(data)
+          returnList.push(data);
+        } else if (data == []) {
+          return null;
+        } else {
+          return null;
+        }
+        res.send(returnList);
 
-  db.query(que, async (error, data) => {
-    if(!error){
-      console.log(data[0]);
-      returnObj.info = data[0];
-    } else if(data == []){
-      returnObj.info = null;
-    } else{
-      returnObj.info= null;
-    }
-  })
+      });  
+  
+    })
+    
 
-  que = `select PUid from participant where PIid =` + id;
-  console.log(que);
-  db.query(que, async (error,data) => {
-    if(!error){
-      console.log(data)
-      returnObj.participantInfo = data;
-    } else if (data == []) {
-      returnObj.participantInfo = "none";
-    } else {
-      returnObj.participantInfo = "error";
-    }
-  });
-
-  await res.send(returnObj)
 });
+
 
 
 
@@ -180,20 +182,6 @@ function postIdeaStack(nowId,bE,fE){
   }
 }
 
-// app.get('/ideas/:Iid', async(req,res) => {
-//   let id = [req.params.Iid];
-//   id = String(id);
-
-//   let que = `select * from ideas where iId =` + id;
-
-//   db.query(que,(error, data) => {
-//     if(!error){
-//       res.send(data);
-//     }else{
-//       res.send(error);
-//     }
-//   })
-// })
 
 app.listen(PORT, () => {
   console.log(`Server On : http://192.249.18.118:${PORT}/`);
