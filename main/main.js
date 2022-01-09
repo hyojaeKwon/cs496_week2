@@ -75,6 +75,27 @@ app.get('/ideas/', async(req,res) => {
   })
 })
 
+app.get('/hi',async(req,res) => {
+  res.send('아자아자 화이팅!!');
+})
+
+//idea에 같이하는 사람 넣기
+app.post('/ideas/participant',(req,res)=> {
+
+  let sql = `insert into participant values (?,?)`;
+  let params = [req.body.Iid,req.body.participant];
+  console.log(sql);
+
+  console.log(params);
+  db.query(sql,params,
+    (err,rows,fields) => {
+    try{
+      res.send.apply(rows);
+    } catch {
+      // console.log(err);
+    }
+  });
+});
 
 //idea post api
 app.post( '/ideas/create',(req,res) => {
