@@ -1,6 +1,7 @@
 const { doesNotThrow } = require('assert');
 const exp = require('constants');
 const express = require('express');
+const { stringify } = require('querystring');
 const app = express();
 const PORT = 80;
 const db = require('./config/db');
@@ -42,6 +43,24 @@ db.query(queryState,(error,data) => {
   });
 });
 
+//get ideas detail
+app.get('/ideas/:Iid', async(req,res) => {
+  let id = [req.params.Iid];
+  id = String(id);
+  console.log(id);
+
+  let que = `select * from ideas where iId =` + id;
+
+  console.log(que);
+
+  db.query(que,(error, data) => {
+    if(!error){
+      res.send(data);
+    }else{
+      res.send(error);
+    }
+  })
+})
 
 //get ideas
 app.get('/ideas/', async(req,res) => {
