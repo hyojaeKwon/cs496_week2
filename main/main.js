@@ -10,9 +10,6 @@ const db = require('./config/db');
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
-app.listen(PORT, () => {
-  console.log(`Server On : http://192.249.18.118:${PORT}/`);
-})
 
 
 //사용자 정보 주는 api
@@ -60,7 +57,7 @@ app.get('/ideas/:Iid', async(req,res) => {
 
   db.query(que, async (error, data) => {
     if(!error){
-      console.log(data);
+      console.log(data[0]);
       returnObj.info = data[0];
     } else if(data == []){
       returnObj.info = null;
@@ -74,16 +71,18 @@ app.get('/ideas/:Iid', async(req,res) => {
   db.query(que, async (error,data) => {
     if(!error){
       console.log(data)
-      returnObj['participantInfo'] = data[0];
+      returnObj.participantInfo = data;
     } else if (data == []) {
-      returnObj['participantInfo'] = "none";
+      returnObj.participantInfo = "none";
     } else {
-      returnObj['participantInfo'] = "error";
+      returnObj.participantInfo = "error";
     }
   });
 
-  res.send(returnObj)
+  await res.send(returnObj)
 });
+
+
 
 //get ideas
 app.get('/ideas/', async(req,res) => {
@@ -195,3 +194,7 @@ function postIdeaStack(nowId,bE,fE){
 //     }
 //   })
 // })
+
+app.listen(PORT, () => {
+  console.log(`Server On : http://192.249.18.118:${PORT}/`);
+})
