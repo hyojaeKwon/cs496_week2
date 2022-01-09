@@ -2,7 +2,7 @@
   "name": "new",
   "version": "1.0.0",
   "description": "madcamp",
-  "main": "main/main.js", 
+  "main": "main/main.js",
   "scripts": {
     "start": "node main/main.js"
   },
@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "express": "^4.17.2",
+    "fs": "0.0.1-security",
     "mysql": "^2.18.1"
   },
   "homepage": "https://github.com/hyojaeKwon/cs496_week2#readme"
