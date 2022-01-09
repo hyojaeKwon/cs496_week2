@@ -1,11 +1,11 @@
 package com.example.cs496_week2;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -48,7 +48,18 @@ public class Frag2 extends Fragment {
         adapter.setOnItemClickListener(new IdeaRecyclerviewAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                getActivity().startActivity(new Intent(getActivity(), DetailIdea.class));
+                Intent intent = new Intent(getActivity(), DetailIdea.class) ;
+
+                // Name 입력 값을 String 값으로 그대로 전달.
+                TextView idea_name = (TextView) v.findViewById(R.id.idea_name) ;
+                intent.putExtra("idea_name", idea_name.getText().toString()) ;
+
+                // Over20 값을 boolean 값으로 전달.
+                TextView person_name = (TextView) v.findViewById(R.id.idea_person_name) ;
+                intent.putExtra("person_name", person_name.getText().toString()) ;
+
+                startActivity(intent) ;
+                //getActivity().startActivity(new Intent(getActivity(), DetailIdea.class));
             }
         });
 

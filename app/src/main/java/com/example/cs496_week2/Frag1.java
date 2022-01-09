@@ -1,6 +1,5 @@
 package com.example.cs496_week2;
 
-import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -74,7 +73,7 @@ public class Frag1 extends Fragment {
         } catch (JSONException e) {
         }
 
-        ClickableViewPager viewPager = v.findViewById(R.id.viewPager_profile);
+        ViewPager viewPager = v.findViewById(R.id.viewPager_profile);
         ViewPagerAdapter fragmentAdapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
         // ViewPager와  FragmentAdapter 연결
         viewPager.setAdapter(fragmentAdapter);
@@ -98,13 +97,6 @@ public class Frag1 extends Fragment {
             fragmentAdapter.addFrag(userFragment);
         }
         fragmentAdapter.notifyDataSetChanged();
-
-        viewPager.setOnViewPagerClickListener(new ClickableViewPager.OnClickListener() {
-            @Override
-            public void onViewPagerClick(ViewPager viewPager) {
-                getActivity().startActivity(new Intent(getActivity(), DetailProfile.class));
-            }
-        });
 
         // 리사이클러뷰에 표시할 데이터 리스트 생성.
         ArrayList<SkillItem> list = new ArrayList<>();
