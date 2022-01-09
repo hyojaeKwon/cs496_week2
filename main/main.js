@@ -10,6 +10,11 @@ const db = require('./config/db');
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
+app.listen(PORT, () => {
+  console.log(`Server On : http://192.249.18.118:${PORT}/`);
+})
+
+
 //사용자 정보 주는 api
 app.get('/user',(req,res) => {
   queryState = `SELECT Uid,Uname,Usay,github,Llang1,Llang2,Llang3 FROM user,user_language where Uid=Lid`;
@@ -25,7 +30,6 @@ app.get('/user',(req,res) => {
     else res.send(error);
   });
 });
-
 
 //사용자 심층 정보 api
 app.get('/user/:id',async (req,res)=> {
@@ -48,19 +52,38 @@ app.get('/ideas/:Iid', async(req,res) => {
   let id = [req.params.Iid];
   id = String(id);
   console.log(id);
+  var returnObj = new Object();
 
-  let que = `select * from ideas where iId =` + id;
+  let que = `select * from ideas where Iid = ` + id; 
 
   console.log(que);
 
-  db.query(que,(error, data) => {
+  db.query(que, async (error, data) => {
     if(!error){
-      res.send(data);
-    }else{
-      res.send(error);
+      console.log(data);
+      returnObj.info = data[0];
+    } else if(data == []){
+      returnObj.info = null;
+    } else{
+      returnObj.info= null;
     }
   })
-})
+
+  que = `select PUid from participant where PIid =` + id;
+  console.log(que);
+  db.query(que, async (error,data) => {
+    if(!error){
+      console.log(data)
+      returnObj['participantInfo'] = data[0];
+    } else if (data == []) {
+      returnObj['participantInfo'] = "none";
+    } else {
+      returnObj['participantInfo'] = "error";
+    }
+  });
+
+  res.send(returnObj)
+});
 
 //get ideas
 app.get('/ideas/', async(req,res) => {
@@ -156,10 +179,19 @@ function postIdeaStack(nowId,bE,fE){
       }
     });
   }
+}
 
-  }
+// app.get('/ideas/:Iid', async(req,res) => {
+//   let id = [req.params.Iid];
+//   id = String(id);
 
+//   let que = `select * from ideas where iId =` + id;
 
-app.listen(PORT, () => {
-  console.log(`Server On : http://192.249.18.118:${PORT}/`);
-})
+//   db.query(que,(error, data) => {
+//     if(!error){
+//       res.send(data);
+//     }else{
+//       res.send(error);
+//     }
+//   })
+// })
