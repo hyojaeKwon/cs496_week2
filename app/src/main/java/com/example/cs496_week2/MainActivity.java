@@ -1,14 +1,15 @@
 package com.example.cs496_week2;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.content.res.AssetManager;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
+import android.util.Base64;
+import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,6 +19,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -26,10 +29,29 @@ public class MainActivity extends AppCompatActivity {
     private final HashSet<String> filter = new HashSet<>();
     ArrayList<UserInfo> listUser = new ArrayList<>();
 
+    private void getAppKeyHash() {
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md;
+                md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                String something = new String(Base64.encode(md.digest(), 0));
+                Log.e("Hash key", something);
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.e("name not found", e.toString());
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getAppKeyHash();
 
         AssetManager assetManager = getResources().getAssets();
         try {
@@ -101,40 +123,6 @@ public class MainActivity extends AppCompatActivity {
         list.add(new RecyclerviewItem(R.drawable.python, "Python", 15));
         list.add(new RecyclerviewItem(R.drawable.java, "Java", 12));
 
-        // 리사이클러뷰에 LinearLayoutManager 객체 지정.
-//        RecyclerView recyclerView = findViewById(R.id.recycler1) ;
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this)) ;
-//
-//        // 리사이클러뷰에 SimpleTextAdapter 객체 지정.
-//        RecyclerviewAdapter adapter = new RecyclerviewAdapter(list) ;
-//        recyclerView.setAdapter(adapter);
 
-//        adapter.setOnItemClickListener(new RecyclerviewAdapter.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(View v, int position, String skill_name) {
-//                if(filter.contains(skill_name)) {
-//                    filter.remove(skill_name);
-//                    v.setBackgroundColor(Color.WHITE);
-//                } else {
-//                    filter.add(skill_name);
-//                    v.setBackgroundColor(Color.BLUE);
-//                }
-//
-//                fragmentAdapter.clear();
-//                for (int i = 0; i < listUser.size(); i++) {
-//                    if(!listUser.get(i).getLanguage().containsAll(filter)) continue;
-//                    UserFragment userFragment = new UserFragment();
-//                    Bundle bundle = new Bundle();
-//                    bundle.putString("name", listUser.get(i).getName());
-//                    bundle.putString("description", listUser.get(i).getDescription());
-//                    bundle.putSerializable("language", listUser.get(i).getLanguage());
-//                    bundle.putString("gitAddr", listUser.get(i).getGitAddr());
-//                    userFragment.setArguments(bundle);
-//                    fragmentAdapter.addFrag(userFragment);
-//                }
-//                fragmentAdapter.notifyDataSetChanged();
-//                viewPager.setAdapter(fragmentAdapter);
-//            }
-//        }) ;
     }
 }
