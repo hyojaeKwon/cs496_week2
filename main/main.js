@@ -45,7 +45,7 @@ app.post('/login',async (req,res) => {
 
 //사용자 정보 주는 api
 app.get('/user',(req,res) => {
-  queryState = `SELECT Uid,Uname,Usay,github,Llang1,Llang2,Llang3 FROM user,user_language where Uid=Lid`;
+  queryState = `SELECT Uid,Uname,Usay,Utype,github,Llang1,Llang2,Llang3 FROM user,user_language where Uid=Lid`;
   db.query(queryState, (error, data) => {
     var list = new Array();
     list.push(data);
@@ -63,7 +63,7 @@ app.get('/user',(req,res) => {
 app.get('/user/:id',async (req,res)=> {
   console.log(req.params.id);
 
-queryState = `SELECT * FROM user where Uid="` + String(req.params.id)+`";`;
+queryState = `SELECT * FROM user join user_language where Uid=Lid and Uid="` + String(req.params.id)+`";`;
 console.log(queryState)
 db.query(queryState,(error,data) => {
   if(!error){
@@ -271,9 +271,9 @@ function isType(id,res){
 }
 //매칭 시켜주는 프로그램
 function match(type,res){
-  console.log("3")
-  let url = `select distinct Uid,Uname,Usay,Utype,github from user left outer join ideas on user.Uid = ideas.IauthorId and Iid = NULL and Utype !=`;
-  db.query(url+String(type),(error,data)=>{
+
+  let url = `select distinct Uid,Uname,Usay,Utype,github,Llang1,Llang2,Llang3 from user left outer join ideas on user.Uid = ideas.IauthorId and Iid = NULL and Utype=`+String(type)+` join user_language on Lid=Uid`;
+  db.query(url,(error,data)=>{
     try{
       res.send(data);
     } catch {
