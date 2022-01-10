@@ -35,5 +35,6 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.getTabAt(0).setText("Tab 1");
         tabLayout.getTabAt(1).setText("Tab 2");
         tabLayout.getTabAt(2).setText("Tab 3");
+
     }
 }
