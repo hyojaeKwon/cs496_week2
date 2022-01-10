@@ -27,11 +27,11 @@ public class DetailIdea extends AppCompatActivity {
         Intent intent = getIntent() ;
 
         TextView detail_idea_name = (TextView) findViewById(R.id.detail_idea_name) ;
-        String idea_name = intent.getStringExtra("idea_name") ;
+        String idea_name = intent.getStringExtra("Ititle") ;
         detail_idea_name.setText(idea_name) ;
 
         TextView detail_person_name = (TextView) findViewById(R.id.detail_person_name) ;
-        String person_name = intent.getStringExtra("person_name") ;
+        String person_name = intent.getStringExtra("IauthorId") ;
         detail_person_name.setText(person_name) ;
     }
 }

@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
         //ViewPager과 TabLayout 연결
         tabLayout.setupWithViewPager(viewPager);
 
-        tabLayout.getTabAt(0).setText("첫 번째");
-        tabLayout.getTabAt(1).setText("두 번째");
-        tabLayout.getTabAt(2).setText("세 번째");
+        tabLayout.getTabAt(0).setText("Tab 1");
+        tabLayout.getTabAt(1).setText("Tab 2");
+        tabLayout.getTabAt(2).setText("Tab 3");
     }
 }

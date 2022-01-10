@@ -75,13 +75,13 @@ public class IdeaRecyclerviewAdapter extends RecyclerView.Adapter<IdeaRecyclervi
     // onBindViewHolder() - position에 해당하는 데이터를 뷰홀더의 아이템뷰에 표시.
     @Override
     public void onBindViewHolder(IdeaRecyclerviewAdapter.ViewHolder holder, int position) {
-        String idea_name = mData.get(position).getIdeaName();
+        String idea_name = mData.get(position).getItitle();
         holder.idea_name_view.setText(idea_name);
 
-        String person_name = mData.get(position).getPersonName();
+        String person_name = mData.get(position).getIauthorId();
         holder.person_name_view.setText(person_name);
 
-        int count = mData.get(position).getCount();
+        int count = 15;
         holder.count_view.setText(Integer.toString(count));
     }
 

@@ -1,37 +1,47 @@
 package com.example.cs496_week2;
 
 public class IdeaItem {
-    private String idea_name;
-    private String person_name;
-    private int count;
+    private int Iid;
+    private String Ititle;
+    private String Idescription;
+    private String IauthorId;
 
-    public IdeaItem(String idea_name, String person_name, int count) {
-        this.idea_name = idea_name;
-        this.person_name = person_name;
-        this.count = count;
+    public IdeaItem(int Iid, String Ititle, String Idescription, String IauthorId) {
+        this.Iid = Iid;
+        this.Ititle = Ititle;
+        this.Idescription = Idescription;
+        this.IauthorId = IauthorId;
     }
 
-    public String getIdeaName() {
-        return idea_name;
+    public int getIid() {
+        return Iid;
     }
 
-    public void setIdeaName(String idea_name) {
-        this.idea_name = idea_name;
+    public void setIid(int Iid) {
+        this.Iid = Iid;
     }
 
-    public String getPersonName() {
-        return person_name;
+    public String getItitle() {
+        return Ititle;
     }
 
-    public void setPersonName(String person_name) {
-        this.person_name = person_name;
+    public void setItitle(String Ititle) {
+        this.Ititle = Ititle;
     }
 
-    public int getCount() {
-        return count;
+    public String getIdescription() {
+        return Idescription;
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public void setIdescription(String Idescription) {
+        this.Idescription = Idescription;
+    }
+
+    public String getIauthorId() {
+        return IauthorId;
+    }
+
+    public void setIauthorId(String IauthorId) {
+        this.IauthorId = IauthorId;
     }
 }

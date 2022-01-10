@@ -1,6 +1,6 @@
 {
   "idea" : [
-    { //Iid는 게시글 id
+    {
       "Iid": 61,
       "Ititle": "게시글 제목",
       "Idescription": "게시글 설명",
