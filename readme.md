@@ -24,8 +24,7 @@
 
 1. 자신의 기술스택, 사용언어, 직군, 깃허브주소, 한줄소개를 서버로 전달
 2. kakao login sdk사용
-
-![KakaoTalk_20220111_204528417](\KakaoTalk_20220111_204528417.gif)
+<img src="KakaoTalk_20220111_204528417.gif" width="200" height="400"/> 
 
 ### Tab 1
 
@@ -38,9 +37,9 @@
 3. 하트를 눌러 같이하자고 시그널을 보낼 수 있음 
 4. 클릭을 통해 상세 정보를 볼 수 있음.
 
-![KakaoTalk_20220111_204527961](\KakaoTalk_20220111_204527961.gif)
+<img src="KakaoTalk_20220111_204527961.gif" width="200" height="400"/> 
 
-![KakaoTalk_20220111_204528615](\KakaoTalk_20220111_204528615.gif)
+<img src="KakaoTalk_20220111_204528615.gif" width="200" height="400"/> 
 
 ### Tab 2
 
@@ -65,8 +64,8 @@
 2. 좋은 사람들을 색상에 따라 나눠 보여줌
 
 
+<img src="KakaoTalk_20220111_204528924.gif" width="200" height="400"/> 
 
-![KakaoTalk_20220111_204528924](\KakaoTalk_20220111_204528924.gif)
 
 
 
