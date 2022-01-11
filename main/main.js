@@ -336,6 +336,34 @@ function match(type,res){
     }  
   })
 }
+
+app.post('/pick',(req,res) => {
+  let sql = `insert into pick values (?,?)`;
+  let params = [req.body.fromId,req.body.toId];
+  console.log(params);
+  db.query(sql,params,
+    (err,rows,fields) => {
+      try{
+        res.send.apply(rows);
+      } catch {
+        console.log(err);
+      }
+    });
+});
+
+app.get('/who-pick/:id',(req,res)=>{
+  let nowId = req.params.id;
+  let url = `select PFromid from pick where PToid = "` + String(nowId)+`"`;
+
+  db.query(url,(error,data)=>{
+    try{
+      res.send(data);
+    } catch {
+      res.send(error);
+    }
+  })
+});
+
 app.listen(PORT, () => {
   console.log(`Server On : http://192.249.18.118:${PORT}/`);
 })
