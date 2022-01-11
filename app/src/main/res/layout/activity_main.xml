@@ -1,68 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="MainActivity"
-    android:orientation="vertical">
-    <LinearLayout
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <com.example.cs496_week2.NonSwipeViewPager
+        android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:layout_weight="10" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewpager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:ignore="SpeakableTextPresentCheck">
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tab"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_alignParentBottom="true"
-                app:tabIndicatorGravity="top"
-                >
-                <!-- app:tabTextAppearance="@style/TabText">-->
-                <!--            android:background="@color/red_500">-->
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_Item1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="tab1" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_Item2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="tab2" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_Item3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="tab3" />
-            </com.google.android.material.tabs.TabLayout>
-        </androidx.viewpager.widget.ViewPager>
-    </LinearLayout>
-<!--    <androidx.viewpager.widget.ViewPager-->
-<!--        android:id="@+id/viewPager"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintBottom_toTopOf="@id/recycler1"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/recycler1"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="300dp"-->
-<!--        android:layout_gravity="bottom"-->
-<!--        android:scrollbars="vertical"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/viewPager" />-->
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

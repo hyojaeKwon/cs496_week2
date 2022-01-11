@@ -1,0 +1,24 @@
+{
+  "detail_profile" : [
+    {
+      "Uid": "khj010909",
+      "Upw": "1111",
+      "Uname": "Hyojae",
+      "Usay": "Hi",
+      "Utype": 1,
+      "Uideaid": null,
+      "Ustack": "Android studio",
+      "github": "hyojaeKwon"
+    },
+    {
+      "Uid": "khj01090909",
+      "Upw": "1111",
+      "Uname": "Hyo",
+      "Usay": "Hi",
+      "Utype": 1,
+      "Uideaid": null,
+      "Ustack": "Android studio",
+      "github": "hyojaeKwon"
+    }
+  ]
+}

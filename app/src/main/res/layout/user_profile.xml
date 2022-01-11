@@ -10,7 +10,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardview_member"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:backgroundTint="@android:color/holo_blue_dark"
         android:elevation="6dp"
@@ -47,7 +47,7 @@
                     app:civ_border_width="5dp" />
 
                 <ToggleButton
-                    android:id="@+id/button_favorite"
+                    android:id="@+id/btn_profile_like"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginTop="15dp"
@@ -79,7 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="gitAddr" />
+                android:text="github" />
 
         </LinearLayout>
 

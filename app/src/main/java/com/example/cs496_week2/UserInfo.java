@@ -3,31 +3,57 @@ package com.example.cs496_week2;
 import java.util.HashSet;
 
 public class UserInfo {
-    private String name;
+    private String Uid;
+    private String Uname;
+    private String Usay;
+    private String github;
     private HashSet<String> language;
-    private String description;
-    private String gitAddr;
 
-    public UserInfo(String name, HashSet<String> language, String description, String gitAddr) {
-        this.name = name;
+    public UserInfo(String Uid, String Uname, String Usay, String github, HashSet<String> language) {
+        this.Uid = Uid;
+        this.Uname = Uname;
+        this.Usay = Usay;
+        this.github = github;
         this.language = language;
-        this.description = description;
-        this.gitAddr = gitAddr;
     }
 
-    public String getName() { return name; }
+    public String getUid() {
+        return Uid;
+    }
 
-    public void setName(String name) { this.name = name; }
+    public void setUid(String Uid) {
+        this.Uid = Uid;
+    }
 
-    public HashSet<String> getLanguage() { return language; }
+    public String getUname() {
+        return Uname;
+    }
 
-    public void setLanguage(HashSet<String> language) { this.language = language; }
+    public void setUname(String Uname) {
+        this.Uname = Uname;
+    }
 
-    public String getDescription() { return description; }
+    public String getUsay() {
+        return Usay;
+    }
 
-    public void setDescription(String description) { this.description = description; }
+    public void setUsay(String Usay) {
+        this.Usay = Usay;
+    }
 
-    public String getGitAddr() { return gitAddr; }
+    public String getGithub() {
+        return github;
+    }
 
-    public void setGitAddr(String gitAddr) { this.gitAddr = gitAddr; }
+    public void setGithub(String github) {
+        this.github = github;
+    }
+
+    public HashSet<String> getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(HashSet<String> language) {
+        this.language = language;
+    }
 }
