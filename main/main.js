@@ -105,7 +105,19 @@ app.get('/ideas/:Iid', async (req,res) => {
         } else {
           return null;
         }
-        res.send(returnList);
+        que = `select * from idea_stack where ISid=`+id;
+        db.query(que,(error,data) => {
+          if(!error){
+            // console.log(data)
+            returnList.push(data);
+          } else if (data == []) {
+            return null;
+          } else {
+            return null;
+          }
+          res.send(returnList);
+        });
+        
 
       });  
   
@@ -176,35 +188,35 @@ app.post('/ideas/participant',(req,res)=> {
 app.post( '/ideas/create',async (req,res) => {
   let sql = 'insert into ideas values (null,?,?,?)';
 
-  let {title, description, id, frontEnd, backEnd} = req.body;  
+  let {title, description, id, frontEnd, backEnd,etc} = req.body;  
   let params = [title,description,id];
 
   //디비 저장
   var nowId;
   //ideas에서 Iid가져오기
-  var hi = await sequence(sql,params,res,backEnd,frontEnd);
+  var hi = await sequence(sql,params,res,backEnd,frontEnd,etc);
 });
 
- function sequence(sql,param,res,backEnd,frontEnd){
-  postCall(sql,param,res,backEnd,frontEnd);
+ function sequence(sql,param,res,backEnd,frontEnd,etc){
+  postCall(sql,param,res,backEnd,frontEnd,etc);
   
   // var id = await postCall(sql,param,res);
   // var id = await getIdeaId(sql2,res);
   // var result = await postIdeaStack(id,backEnd,frontEnd,res);
 }
 
-async function postCall(sql,param,res,backEnd,frontEnd){
+async function postCall(sql,param,res,backEnd,frontEnd,etc){
   db.query(sql,param,(err,rows,fields) => {
       try{
         res.send(rows);
       }catch(err){
         console.log(err);
       }
-      getIdeaId(sql,res,backEnd,frontEnd);
+      getIdeaId(sql,res,backEnd,frontEnd,etc);
     });
 }
 
-function getIdeaId(sql,rest,bE,fE){
+function getIdeaId(sql,rest,bE,fE,etc){
   var nowId;
   let sql2 = "select Iid from ideas order by Iid desc limit 1";
   db.query(sql2, async (req,resp) => {
@@ -215,11 +227,11 @@ function getIdeaId(sql,rest,bE,fE){
       console.log(err);
       nowId = -1;
     }
-    postIdeaStack(nowId,bE,fE,rest);
+    postIdeaStack(nowId,bE,fE,etc,rest);
   });
 }
 
-function postIdeaStack(nowId,bE,fE,res){
+function postIdeaStack(nowId,bE,fE,etc,res){
   sql = `insert into idea_stack values (?,?)`
   console.log(fE)
   if(fE!=undefined){
@@ -236,6 +248,16 @@ function postIdeaStack(nowId,bE,fE,res){
   }
   if(bE!=undefined){
     let param=[nowId,bE];
+    db.query(sql,param,(err,rows,fields) => {
+      try{
+        res.send.apply(rows)
+      }catch(err){
+        console.log(err);
+      }
+    });
+  }
+  if(etc!=undefined){
+    let param=[nowId,etc];
     db.query(sql,param,(err,rows,fields) => {
       try{
         res.send.apply(rows)
