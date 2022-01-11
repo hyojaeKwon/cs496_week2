@@ -41,7 +41,6 @@ public class Frag1 extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.frag1, container, false);
-
         listUser.clear();
         filter.clear();
         AssetManager assetManager = getResources().getAssets();
@@ -80,18 +79,18 @@ public class Frag1 extends Fragment {
                 language.add(Llang2);
                 language.add(Llang3);
 
-                if(skillMap.containsKey(Llang1)) {
-                    skillMap.put(Llang1, skillMap.get(Llang1)+1);
+                if (skillMap.containsKey(Llang1)) {
+                    skillMap.put(Llang1, skillMap.get(Llang1) + 1);
                 } else {
                     skillMap.put(Llang1, 1);
                 }
-                if(skillMap.containsKey(Llang2)) {
-                    skillMap.put(Llang2, skillMap.get(Llang2)+1);
+                if (skillMap.containsKey(Llang2)) {
+                    skillMap.put(Llang2, skillMap.get(Llang2) + 1);
                 } else {
                     skillMap.put(Llang2, 1);
                 }
-                if(skillMap.containsKey(Llang3)) {
-                    skillMap.put(Llang3, skillMap.get(Llang3)+1);
+                if (skillMap.containsKey(Llang3)) {
+                    skillMap.put(Llang3, skillMap.get(Llang3) + 1);
                 } else {
                     skillMap.put(Llang3, 1);
                 }
@@ -132,7 +131,7 @@ public class Frag1 extends Fragment {
 
         // 리사이클러뷰에 표시할 데이터 리스트 생성.
         ArrayList<SkillItem> list = new ArrayList<>();
-        for(Map.Entry<String, Integer> entry: skillMap.entrySet()) {
+        for (Map.Entry<String, Integer> entry : skillMap.entrySet()) {
             list.add(new SkillItem(R.drawable.question_mark, entry.getKey(), entry.getValue()));
         }
         Collections.sort(list, new SkillItemComparator());
@@ -182,8 +181,9 @@ public class Frag1 extends Fragment {
 
         @Override
         public int compare(SkillItem s1, SkillItem s2) {
-            if(s1.getCount() < s2.getCount()) return 1;
-            else if(s1.getCount() == s2.getCount() && s1.getName().compareTo(s2.getName()) > 0) return 1;
+            if (s1.getCount() < s2.getCount()) return 1;
+            else if (s1.getCount() == s2.getCount() && s1.getName().compareTo(s2.getName()) > 0)
+                return 1;
             return -1;
         }
     }
