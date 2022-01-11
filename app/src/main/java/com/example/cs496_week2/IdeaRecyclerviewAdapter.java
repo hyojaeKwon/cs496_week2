@@ -4,52 +4,50 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class RecyclerviewAdapter extends RecyclerView.Adapter<RecyclerviewAdapter.ViewHolder> {
+public class IdeaRecyclerviewAdapter extends RecyclerView.Adapter<IdeaRecyclerviewAdapter.ViewHolder> {
 
-    private ArrayList<RecyclerviewItem> mData = null;
+    private ArrayList<IdeaItem> mData = null;
 
     public interface OnItemClickListener {
-        void onItemClick(View v, int position, String skill_name) ;
+        void onItemClick(View v, int position);
     }
 
     // 리스너 객체 참조를 저장하는 변수
-    private OnItemClickListener mListener = null ;
+    private OnItemClickListener mListener = null;
 
     // OnItemClickListener 리스너 객체 참조를 어댑터에 전달하는 메서드
     public void setOnItemClickListener(OnItemClickListener listener) {
-        this.mListener = listener ;
+        this.mListener = listener;
     }
 
     // 아이템 뷰를 저장하는 뷰홀더 클래스.
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name_view;
+        TextView idea_name_view;
+        TextView person_name_view;
         TextView count_view;
-        ImageView image_view;
 
         ViewHolder(View itemView) {
             super(itemView);
 
             // 뷰 객체에 대한 참조. (hold strong reference)
-            name_view = itemView.findViewById(R.id.item_name);
-            count_view = itemView.findViewById(R.id.item_count);
-            image_view = itemView.findViewById(R.id.item_image);
+            idea_name_view = itemView.findViewById(R.id.idea_name);
+            person_name_view = itemView.findViewById(R.id.idea_person_name);
+            count_view = itemView.findViewById(R.id.idea_like_count);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int pos = getAdapterPosition() ;
+                    int pos = getAdapterPosition();
                     if (pos != RecyclerView.NO_POSITION) {
                         // 리스너 객체의 메서드 호출.
                         if (mListener != null) {
-                            String skill_name = name_view.getText().toString();
-                            mListener.onItemClick(v, pos, skill_name) ;
+                            mListener.onItemClick(v, pos);
                         }
                     }
                 }
@@ -58,38 +56,38 @@ public class RecyclerviewAdapter extends RecyclerView.Adapter<RecyclerviewAdapte
     }
 
     // 생성자에서 데이터 리스트 객체를 전달받음.
-    RecyclerviewAdapter(ArrayList<RecyclerviewItem> list) {
-        mData = list ;
+    IdeaRecyclerviewAdapter(ArrayList<IdeaItem> list) {
+        mData = list;
     }
 
     // onCreateViewHolder() - 아이템 뷰를 위한 뷰홀더 객체 생성하여 리턴.
     @Override
-    public RecyclerviewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Context context = parent.getContext() ;
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) ;
+    public IdeaRecyclerviewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        Context context = parent.getContext();
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View view = inflater.inflate(R.layout.recyclerview_item, parent, false) ;
-        RecyclerviewAdapter.ViewHolder vh = new RecyclerviewAdapter.ViewHolder(view) ;
+        View view = inflater.inflate(R.layout.idea_item, parent, false);
+        IdeaRecyclerviewAdapter.ViewHolder vh = new IdeaRecyclerviewAdapter.ViewHolder(view);
 
-        return vh ;
+        return vh;
     }
 
     // onBindViewHolder() - position에 해당하는 데이터를 뷰홀더의 아이템뷰에 표시.
     @Override
-    public void onBindViewHolder(RecyclerviewAdapter.ViewHolder holder, int position) {
-        int image = mData.get(position).getImage();
-        holder.image_view.setImageResource(image);
+    public void onBindViewHolder(IdeaRecyclerviewAdapter.ViewHolder holder, int position) {
+        String idea_name = mData.get(position).getItitle();
+        holder.idea_name_view.setText(idea_name);
 
-        String name = mData.get(position).getName();
-        holder.name_view.setText(name);
+        String person_name = mData.get(position).getIauthorId();
+        holder.person_name_view.setText(person_name);
 
-        int count = mData.get(position).getCount();
+        int count = 15;
         holder.count_view.setText(Integer.toString(count));
     }
 
     // getItemCount() - 전체 데이터 갯수 리턴.
     @Override
     public int getItemCount() {
-        return mData.size() ;
+        return mData.size();
     }
 }

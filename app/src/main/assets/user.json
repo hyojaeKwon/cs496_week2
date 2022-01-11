@@ -1,0 +1,84 @@
+{
+  "user": [
+    {
+      "Uid": "exampl111@naver.com",
+      "Uname": "exampleName",
+      "Usay": "let's do it well",
+      "Utype": 1,
+      "github": "example",
+      "Llang1": "Java",
+      "Llang2": "Python",
+      "Llang3": "exc"
+    },
+    {
+      "Uid": "exampl11@naver.com",
+      "Uname": "exampleName",
+      "Usay": "let's do it well",
+      "Utype": 1,
+      "github": "example",
+      "Llang1": "Java",
+      "Llang2": "Python",
+      "Llang3": "exc"
+    },
+    {
+      "Uid": "exampl1@naver.com",
+      "Uname": "exampleName",
+      "Usay": "let's do it well",
+      "Utype": 1,
+      "github": "example",
+      "Llang1": "Java",
+      "Llang2": "Python",
+      "Llang3": "exc"
+    },
+    {
+      "Uid": "exampleD2@naver.com",
+      "Uname": "exampleName",
+      "Usay": "let's do it well",
+      "Utype": 3,
+      "github": "example",
+      "Llang1": "Java",
+      "Llang2": "Python",
+      "Llang3": "Kotlin"
+    },
+    {
+      "Uid": "exampleD@naver.com",
+      "Uname": "exampleName",
+      "Usay": "let's do it well",
+      "Utype": 3,
+      "github": "example",
+      "Llang1": "C",
+      "Llang2": "Python",
+      "Llang3": "exc"
+    },
+    {
+      "Uid": "exampleID@naver.com",
+      "Uname": "exampleName",
+      "Usay": "let's do it well",
+      "Utype": 2,
+      "github": "example",
+      "Llang1": "C",
+      "Llang2": "Python",
+      "Llang3": "exc"
+    },
+    {
+      "Uid": "khj010909",
+      "Uname": "Hyojae",
+      "Usay": "Hi",
+      "Utype": 1,
+      "github": "hyojaeKwon",
+      "Llang1": "Kotlin",
+      "Llang2": "Java",
+      "Llang3": "C++"
+    },
+    {
+      "Uid": "khj01090909",
+      "Uname": "Hyo",
+      "Usay": "Hi",
+      "Utype": 1,
+      "github": "hyojaeKwon",
+      "Llang1": "C",
+      "Llang2": "Python",
+      "Llang3": "C++"
+    }
+  ]
+}
