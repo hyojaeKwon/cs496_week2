@@ -46,8 +46,7 @@ public class startActivity extends AppCompatActivity {
                 Log.d(TAG, "onClick: 로그인 세션끝남");
                 // 카카오 로그인 시도 (창이 뜬다.)
                 session.open(AuthType.KAKAO_LOGIN_ALL, startActivity.this);
-                startActivity(intent);
-                finish();
+
             }
 
         });
