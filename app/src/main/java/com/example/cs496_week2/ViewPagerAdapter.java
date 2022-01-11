@@ -13,17 +13,19 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     private final List<Fragment> mFragmentList = new ArrayList<>();
     //private final List<String> mFragmentTitleList = new ArrayList<>();
 
-    String name;
-    String description;
+    String Uid;
+    String Uname;
+    String Usay;
+    String github;
     HashSet<String> language;
-    String gitAddr;
+    int Utype;
 
     public ViewPagerAdapter(FragmentManager manager) {
         super(manager);
     }
 
     public interface UpdateableFragment {
-        public void updateUI(String name, String description, HashSet<String> language, String gitAddr);
+        public void updateUI(String Uid, String Uname, String Usay, String github, HashSet<String> language, int Utype);
     }
 
     @Override
@@ -43,19 +45,21 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getItemPosition(@NonNull Object object) {
-        if(object instanceof UserFragment) {
-            ((UpdateableFragment) object).updateUI(name, description, language, gitAddr);
+        if (object instanceof UserFragment) {
+            ((UpdateableFragment) object).updateUI(Uid, Uname, Usay, github, language, Utype);
         }
 
         //don't return POSITION_NONE, avoid fragment recreation.
         return super.getItemPosition(object);
     }
 
-    public void update(String _name, String _description, HashSet<String> _language, String _gitAddr) {
-        name = _name;
-        description = _description;
+    public void update(String _Uid, String _Uname, String _Usay, String _github, HashSet<String> _language, int _Utype) {
+        Uid = _Uid;
+        Uname = _Uname;
+        Usay = _Usay;
+        github = _github;
         language = _language;
-        gitAddr = _gitAddr;
+        Utype = _Utype;
         notifyDataSetChanged();
     }
 
@@ -63,5 +67,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         mFragmentList.add(fragment);
     }
 
-    public void clear() { mFragmentList.clear(); }
+    public void clear() {
+        mFragmentList.clear();
+    }
 }
