@@ -53,7 +53,7 @@ app.get('/user',(req,res) => {
     resultData.user = data;
 
     if(!error){
-      res.send(data);
+      res.send(JSON.stringify({"user":data}));
       } 
     else res.send(error);
   });
@@ -194,29 +194,25 @@ app.post( '/ideas/create',async (req,res) => {
   //디비 저장
   var nowId;
   //ideas에서 Iid가져오기
-  var hi = await sequence(sql,params,res,backEnd,frontEnd,etc);
+  var hi = await sequence(sql,params,res,backEnd,frontEnd,etc,id);
 });
 
- function sequence(sql,param,res,backEnd,frontEnd,etc){
-  postCall(sql,param,res,backEnd,frontEnd,etc);
-  
-  // var id = await postCall(sql,param,res);
-  // var id = await getIdeaId(sql2,res);
-  // var result = await postIdeaStack(id,backEnd,frontEnd,res);
+ function sequence(sql,param,res,backEnd,frontEnd,etc,id){
+  postCall(sql,param,res,backEnd,frontEnd,etc,id);
 }
 
-async function postCall(sql,param,res,backEnd,frontEnd,etc){
+async function postCall(sql,param,res,backEnd,frontEnd,etc,id){
   db.query(sql,param,(err,rows,fields) => {
       try{
         res.send(rows);
       }catch(err){
         console.log(err);
       }
-      getIdeaId(sql,res,backEnd,frontEnd,etc);
+      getIdeaId(sql,res,backEnd,frontEnd,etc,id);
     });
 }
 
-function getIdeaId(sql,rest,bE,fE,etc){
+function getIdeaId(sql,rest,bE,fE,etc,id){
   var nowId;
   let sql2 = "select Iid from ideas order by Iid desc limit 1";
   db.query(sql2, async (req,resp) => {
@@ -227,21 +223,27 @@ function getIdeaId(sql,rest,bE,fE,etc){
       console.log(err);
       nowId = -1;
     }
-    postIdeaStack(nowId,bE,fE,etc,rest);
+    postIdeaStack(nowId,bE,fE,etc,rest,id);
   });
 }
 
-function postIdeaStack(nowId,bE,fE,etc,res){
+async function postIdeaStack(nowId,bE,fE,etc,res,id){
+  console.log(bE,fE,etc);
+  // var isTrue = checkAndPut(id);
+  // console.log(isTrue)
+  // if(isThere == false){
+  //   putIdea(id,nowId);
+  // }
+  checkAndPut(id,nowId);
   sql = `insert into idea_stack values (?,?)`
   console.log(fE)
   if(fE!=undefined){
     let param=[nowId,fE];
-    console.log(param)
     db.query(sql,param),
       function (err,rows,fields) {
       try{
         res.send.apply(rows)
-      }catch(err){
+      }catch{
         console.log(err);
       }
     };
@@ -251,7 +253,7 @@ function postIdeaStack(nowId,bE,fE,etc,res){
     db.query(sql,param,(err,rows,fields) => {
       try{
         res.send.apply(rows)
-      }catch(err){
+      }catch{
         console.log(err);
       }
     });
@@ -261,15 +263,46 @@ function postIdeaStack(nowId,bE,fE,etc,res){
     db.query(sql,param,(err,rows,fields) => {
       try{
         res.send.apply(rows)
-      }catch(err){
+      }catch{
         console.log(err);
       }
     });
   }
 }
 
+function checkAndPut(id,nowId){
+  let query =  `select Uideaid from user where Uid = `+String(id);
+  console.log('ok0')
+  db.query(query,(req,res)=>{
+    try{
+      if(res == null){
+        putIdea(id,nowId)
+      } else {
+        return;
+      }
+    }catch(err){
+      console.log(err);
+    }
+  })
+}
 
+function putIdea(id,nowId){
+  let sql = `update user set Uideaid = `+String(nowId)+` where Uid = "`+String(id)+`"`;
 
+  console.log(sql);
+  let param = [nowId];
+  console.log('Ok1');
+
+  db.query(sql,
+    (err,rows,fields) => {
+      try{
+        res.send.apply(rows);
+        console.log('Ok2');
+      } catch {
+        console.log(err)
+      }
+    })
+}
 
 
 //matching api
