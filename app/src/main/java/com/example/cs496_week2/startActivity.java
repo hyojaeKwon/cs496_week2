@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +17,8 @@ import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
 
 public class startActivity extends AppCompatActivity {
-    private Button loginV1, logout;
+    private Button logout;
+    private ImageButton loginV1;
     private SessionCallback sessionCallback = new SessionCallback();
     Session session;
     private static final String TAG = "MainActivity";
@@ -26,7 +28,7 @@ public class startActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
         Intent intent = new Intent(this,MainActivity.class);
 
-        loginV1 = findViewById(R.id.loginV1);
+        loginV1 = (ImageButton) findViewById(R.id.loginV1);
         logout = findViewById(R.id.logout);
 
 
@@ -38,12 +40,15 @@ public class startActivity extends AppCompatActivity {
                 Log.d(TAG, "onClick: 로그인 세션살아있음");
                 // 카카오 로그인 시도 (창이 안뜬다.)
                 sessionCallback.requestMe();
+                startActivity(intent);
+                finish();
             } else {
                 Log.d(TAG, "onClick: 로그인 세션끝남");
                 // 카카오 로그인 시도 (창이 뜬다.)
                 session.open(AuthType.KAKAO_LOGIN_ALL, startActivity.this);
+                startActivity(intent);
+                finish();
             }
-            startActivity(intent);
 
         });
 

@@ -57,7 +57,6 @@ public class SessionCallback implements ISessionCallback {
                                 Log.d("KAKAO_API", "onSuccess:getNickname "+profile.getNickname());
                             }
                             if (email != null) {
-
                                 Log.d("KAKAO_API", "onSuccess:email "+email);
                             } else if (kakaoAccount.emailNeedsAgreement() == OptionalBoolean.TRUE) {
                                 // 동의 요청 후 이메일 획득 가능
