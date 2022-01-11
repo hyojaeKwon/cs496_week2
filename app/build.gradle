@@ -32,10 +32,16 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+    implementation 'com.google.android.gms:play-services-cast-framework:21.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-
+    implementation "com.kakao.sdk:v2-user:2.4.2" // 카카오 로그인
+    implementation "com.kakao.sdk:v2-talk:2.4.2" // 친구, 메시지(카카오톡)
+    implementation "com.kakao.sdk:v2-story:2.4.2" // 카카오스토리
     implementation 'de.hdodenhof:circleimageview:3.1.0' //Circle ImageView
     implementation 'org.json:json:20190722'
+
+    implementation group: project.KAKAO_SDK_GROUP, name: "usermgmt",version: project.KAKAO_SDK_VERSION
+    implementation group: 'com.kakao.sdk', name: 'usermgmt', version:'1.30.0'
 }

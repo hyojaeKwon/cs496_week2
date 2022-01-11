@@ -28,7 +28,9 @@
         <entry key="..\:/cs496_week2/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.22083333333333333" />
         <entry key="..\:/cs496_week2/app/src/main/res/drawable/ic_favorite.xml" value="0.38229166666666664" />
         <entry key="..\:/cs496_week2/app/src/main/res/drawable/ic_favorite_border.xml" value="0.38229166666666664" />
+        <entry key="..\:/cs496_week2/app/src/main/res/drawable/kakao_login_medium_wide.xml" value="0.22083333333333333" />
         <entry key="..\:/cs496_week2/app/src/main/res/layout/activity_main.xml" value="0.2046875" />
+        <entry key="..\:/cs496_week2/app/src/main/res/layout/activity_start.xml" value="0.24818840579710144" />
         <entry key="..\:/cs496_week2/app/src/main/res/layout/add_idea.xml" value="0.20104166666666667" />
         <entry key="..\:/cs496_week2/app/src/main/res/layout/detail_idea.xml" value="0.28306159420289856" />
         <entry key="..\:/cs496_week2/app/src/main/res/layout/detail_profile.xml" value="0.28306159420289856" />
